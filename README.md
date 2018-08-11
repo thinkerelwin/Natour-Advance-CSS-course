@@ -7,7 +7,7 @@ an advance CSS course, a follow along coding project
   <li>BEM methodology</li>
   <li>Card flipping animation</li>
   <li>Background Video</li>
+  <li>Responsive Image</li>
   <li>Modal without JS</li>
   <li>Funny navigation button</li>
-  <li>Advance CSS property</li>
 </ul>
