@@ -1,0 +1,171 @@
+.navigation {
+  &__checkbox {
+    display: none;
+  }
+
+  &__button {
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    width: 7rem;
+    height: 7rem;
+    text-align: center;
+    border-radius: 50%;
+    z-index: 40;
+    background-color: white;
+    box-shadow: 0 1rem 3rem rgba(black, .1);
+    cursor: pointer;
+
+    @include rwd(sm) {
+      top: 4rem;
+      right: 4rem;
+    }
+
+    @include rwd(xs) {
+      top: 3rem;
+      right: 3rem;
+    }
+  }
+
+  &__background {
+    position: fixed;
+    top: 6.5rem;
+    right: 6.5rem;
+    width: 6rem;
+    height: 6rem;
+    z-index: 30;
+    border-radius: 50%;
+    background-image: radial-gradient($color-primary-light, $color-primary-dark);
+    transition: transform .6s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    @include rwd(sm) {
+      top: 4.5rem;
+      right: 4.5rem;
+    }
+
+    @include rwd(xs) {
+      top: 3.5rem;
+      right: 3.5rem;
+    }
+  }
+
+  &__nav {
+    // display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 35;
+    transition: all .6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+
+    // hide the navigation first
+    opacity: 0;
+    width: 0;
+  }
+
+  &__list {
+    @include absoluteCenter;
+    width: 100%; 
+    list-style: none;
+    text-align: center;
+  }
+
+  &__item {
+    margin: 1rem;
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      padding: 1rem 2rem;
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+      background-size: 225%;
+      transition: all .4s;
+
+      span {
+        display: inline-block;
+        margin-right: 1.5rem;
+      }
+    }
+    &:hover,
+    &:active {
+      background-position: 100%;
+      color: $color-primary;
+      transform: translateX(1rem);
+    }
+  }
+
+
+  // Animation property
+  &__checkbox:checked ~ &__background {
+    transform: scale(80);
+  }
+
+  &__checkbox:checked ~ &__nav {
+    // display: block;
+    opacity: 1;
+    width: 100%;
+  }
+
+  // Icon
+  &__icon {
+    position: relative;
+    margin-top: 50%;
+
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      transition: all .2s;
+    }
+
+    &::before {
+      top: -.8rem;
+    }
+
+    &::after {
+      top: .8rem;
+    }
+  }
+
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}

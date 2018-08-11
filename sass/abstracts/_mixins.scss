@@ -1,0 +1,50 @@
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// media query manager
+
+/*
+
+0 - 600px: xs(phone)
+600 - 900px: sm(tablet portrait)
+900 -1200px: md(tablet landscape)
+1200 - 1800px: default style(desktop first approach)
+1800px +: xl(Big screen)
+
+*/
+
+// Ok but can be better
+
+// @mixin rwd-xs {
+//   @media (max-width: 600px) { @content };
+// }
+
+@mixin rwd($breakpoint) {
+  @if $breakpoint == xs {
+    @media only screen and (max-width: 37.5em) { @content };  // 600px
+  }
+
+  @else if $breakpoint == sm {
+    @media only screen and (max-width: 56.25em) { @content }; // 900px
+  }
+
+  @else if $breakpoint == md {
+    @media only screen and (max-width: 75em) { @content };  // 1200px
+  }
+
+  @else if $breakpoint == xl {
+    @media only screen and (min-width: 112.5em) { @content };  // 1800px
+  }
+}

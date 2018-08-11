@@ -1,0 +1,76 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(black, .1);
+  background-color: rgba(white, .6);
+  border-radius: $border-radius-md;
+  padding: 6rem 6rem 6rem 9rem;
+  transform: skewX(-12deg);
+  // font-size: $default-font-size;
+
+  @include rwd(sm) {
+    width: 100%;
+    padding: 4rem 4rem 4rem 7rem;
+  }
+
+  @include rwd(xs) {
+    transform: skew(0);
+  }
+
+  &__shape {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    transform: translateX(-3rem) skewX(12deg);
+    overflow: hidden;
+    border-radius: 50%;
+
+    @supports (clip-path: polygon(0 0)) {
+      clip-path: circle(50% at 50% 50%); /* not supported in IE, Firefox */
+      shape-outside: circle(50% at 50% 50%); /* not supported in IE, Firefox */
+      border-radius: none;
+    }
+
+    @include rwd(xs) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  &__image {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all .5s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    @include rwd(xs) {
+      // transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  &__caption {
+    @include absoluteCenter;
+    transform: translate(-50%, 20%);
+    opacity: 0;
+    transition: all .5s;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__image {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%); /* not support in IE */
+  }
+}

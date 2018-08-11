@@ -1,0 +1,31 @@
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-bg {
+  margin-bottom: 8rem !important;
+
+  @include rwd(sm) {
+    margin-bottom: 5rem !important;
+  }
+}
+
+.u-margin-bottom-md {
+  margin-bottom: 4rem !important;
+
+  @include rwd(sm) {
+    margin-bottom: 2rem !important;
+  }
+}
+
+.u-margin-bottom-sm {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-top-huge {
+  margin-top: 10rem !important;
+}
+
+.u-margin-top-bg {
+  margin-top: 8rem !important;
+}

@@ -1,0 +1,82 @@
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-grey-dark;
+}
+  
+.heading-primary {
+  margin-bottom: 6rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  backface-visibility: hidden; /* fix the minor shake during animation */
+  
+  &--main {
+    display: block;
+    font-size: 6rem;
+    letter-spacing: 7px;
+    font-weight: 400;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    @include rwd(xs) {
+      font-size: 5rem;
+    }
+  }
+
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    letter-spacing: 4.5px;
+    font-weight: 700;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+}
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  color: black;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: all .2s;
+
+  @supports ( background-clip: text ) {
+    -webkit-background-clip: text;
+    background-clip: text; /* not supported in IE */
+    color: transparent;
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+  }
+
+  @include rwd(sm) {
+    font-size: 3rem;
+  }
+
+    @include rwd(xs) {
+    font-size: 2.5rem;
+  }
+
+  &:hover {
+    transform: skew(15deg, 2deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba( black, .2)
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
